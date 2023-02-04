@@ -48,7 +48,6 @@ const MyPhoneBooksForm = () => {
 
   const deleteContact = id => {
     const newContact = contacts.filter(e => e.id !== id);
-    console.log(newContact);
     setContacts(newContact);
   };
 
