@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import style from './Contacts.module.scss';
 
-const Contacts = props => {
+const Contacts = ({ contactsFilter = [], deleteContact }) => {
   return (
     <div className={style.contact}>
       <h2>Contacts</h2>
       <ol className={style.item}>
-        {props.contactsFilter.map(({ id, name, number }) => (
+        {contactsFilter.map(({ id, name, number }) => (
           <li key={id} className={style.list}>
             <span>
               <b>{name}</b>: {number}
@@ -14,7 +15,7 @@ const Contacts = props => {
             <button
               type="button"
               className={style.btn}
-              onClick={() => props.deleteContact(id)}
+              onClick={() => deleteContact(id)}
             >
               X
             </button>
@@ -26,3 +27,8 @@ const Contacts = props => {
 };
 
 export default Contacts;
+
+Contacts.propTypes = {
+  contactsFilter: PropTypes.array.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};

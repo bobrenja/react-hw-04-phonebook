@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import style from './Search.module.scss';
 
-const Search = props => {
+const Search = ({ handleEnterInput }) => {
   return (
     <div className={style.filter}>
       <label className={style.label}>Search contact</label>
@@ -8,10 +9,14 @@ const Search = props => {
         type="text"
         placeholder="Search contact"
         name="filter"
-        onChange={props.handleEnterInput}
+        onChange={handleEnterInput}
       />
     </div>
   );
 };
 
 export default Search;
+
+Search.propTypes = {
+  handleEnterInput: PropTypes.func.isRequired,
+};
